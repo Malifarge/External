@@ -7,4 +7,10 @@ app.get('/list', async (req, res)=>{
     res.json(response.data.results)
 })
 
+app.get('/:id', async (req,res)=> {
+    const id = req.params.id
+    const response = await axios (` https://pokeapi.co/api/v2/pokemon/${id}`)
+    res.json(response.data)
+})
+
 module.exports = app
