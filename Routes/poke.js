@@ -10,11 +10,11 @@ app.get('/list', async (req, res)=>{
 
 app.get('/:id', async (req,res)=> {
     const {id} = req.params
-    if (Number (id) <=905){
+    try {
         const response = await axios (` https://pokeapi.co/api/v2/pokemon/${id}`)
         res.json(response.data)
-    }else {
-        res.status(404).send("Not Found")
+    }catch (error) {
+        res.status(error.response.status).send(error.response.statusText)
     }
 })
 
