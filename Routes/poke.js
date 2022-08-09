@@ -9,7 +9,7 @@ app.get('/list', async (req, res)=>{
 })
 
 app.get('/:id', async (req,res)=> {
-    const id = req.params.id
+    const {id} = req.params
     if (Number (id) <=905){
         const response = await axios (` https://pokeapi.co/api/v2/pokemon/${id}`)
         res.json(response.data)
